@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Droplets, Phone, Mail, MapPin, Facebook, Instagram, Twitter, ArrowRight } from "lucide-react";
+import { Droplets, Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Twitter, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 export function Footer() {
@@ -30,6 +30,32 @@ export function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
+
+            <div className="flex justify-center md:justify-end gap-4">
+              <p className="text-gray-400 text-sm leading-relaxed">Made by Imran N.</p>
+
+              <div className="flex gap-3">
+              <a
+                href="https://www.instagram.com/crntly.imran_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-chocolate-700 hover:bg-peanut-500 transition"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/imran-nuru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-chocolate-700 hover:bg-peanut-500 transition"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+
+            </div>
+            </div>
+
           </div>
 
           <div>

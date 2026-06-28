@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { WaterBubbles } from "./WaterBubbles";
+import bottle from "../assets/sport-water.png"; // <-- Your transparent bottle image
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-secondary-400">
       <WaterBubbles count={20} />
 
-      {/* Animated wave background */}
+      {/* Animated Wave */}
       <div className="absolute bottom-0 left-0 right-0 h-64 opacity-20">
         <svg
           viewBox="0 0 1440 320"
@@ -24,10 +25,12 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+          {/* LEFT SIDE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
             <motion.div
@@ -43,18 +46,26 @@ export function HeroSection() {
             <h1 className="font-poppins font-extrabold text-5xl sm:text-6xl lg:text-7xl text-white leading-tight mb-6">
               Stay Hydrated.
               <br />
-              <span className="text-secondary-200">Stay Strong.</span>
+              <span className="text-secondary-200">
+                Stay Strong.
+              </span>
             </h1>
 
             <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-              Premium purified drinking water for athletes, families, offices, schools, and everyone who values clean hydration.
+              Premium purified drinking water for athletes,
+              families, offices, schools, and everyone who
+              values clean hydration.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link to="/checkout" className="btn-primary bg-white text-primary-600 hover:bg-gray-100 shadow-xl shadow-black/20">
+              <Link
+                to="/checkout"
+                className="btn-primary bg-white text-primary-600 hover:bg-gray-100 shadow-xl shadow-black/20"
+              >
                 Shop Now
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
+
               <button className="inline-flex items-center justify-center px-6 py-3 text-white font-medium rounded-xl border-2 border-white/30 hover:bg-white/10 transition-all duration-300">
                 <Play className="w-5 h-5 mr-2" />
                 Watch Video
@@ -62,61 +73,115 @@ export function HeroSection() {
             </div>
           </motion.div>
 
+          {/* RIGHT SIDE */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="relative flex items-center justify-center"
           >
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96">
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-3xl" />
+            <div className="relative w-[320px] sm:w-[420px] h-[520px] flex items-center justify-center">
 
-              {/* Floating bottle representation */}
+              {/* Blue Glow */}
               <motion.div
-                animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full flex items-center justify-center"
-              >
-                <div className="w-48 h-80 sm:w-60 sm:h-96 relative">
-                  {/* Bottle shape */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-white/5 rounded-t-3xl rounded-b-xl backdrop-blur-sm border border-white/20 shadow-2xl">
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-8 bg-white/20 rounded-full" />
-                    <div className="absolute top-14 left-4 right-4 h-px bg-white/10" />
-                    <div className="absolute top-20 left-4 right-4 h-px bg-white/10" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 font-poppins font-bold text-lg">
-                      SPORT
-                    </div>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs">
-                      600ml
-                    </div>
-                  </div>
-                  {/* Water fill effect */}
-                  <motion.div
-                    animate={{ height: ["60%", "65%", "60%"] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-400/40 to-secondary-300/20 rounded-b-xl"
-                  />
-                </div>
-              </motion.div>
+                animate={{
+                  scale: [1, 1.08, 1],
+                  opacity: [0.45, 0.7, 0.45],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute w-80 h-80 rounded-full bg-cyan-300 blur-[100px]"
+              />
 
-              {/* Orbiting elements */}
+              {/* Bottle */}
+              <motion.img
+                src={bottle}
+                alt="Sport Water"
+                draggable={false}
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, 2, 0, -2, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative z-20 h-[470px] sm:h-[520px] w-auto object-contain drop-shadow-[0_35px_40px_rgba(0,0,0,0.35)] select-none"
+              />
+
+              {/* Bubble 1 */}
+              <motion.div
+                animate={{
+                  y: [0, -40],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                }}
+                className="absolute bottom-16 left-16 w-4 h-4 rounded-full bg-white/70"
+              />
+
+              {/* Bubble 2 */}
+              <motion.div
+                animate={{
+                  y: [0, -50],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  delay: 1,
+                  repeat: Infinity,
+                }}
+                className="absolute bottom-24 right-12 w-3 h-3 rounded-full bg-cyan-100"
+              />
+
+              {/* Bubble 3 */}
+              <motion.div
+                animate={{
+                  y: [0, -60],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  delay: 2,
+                  repeat: Infinity,
+                }}
+                className="absolute bottom-12 right-24 w-2 h-2 rounded-full bg-white"
+              />
+
+              {/* Rotating Bubble Ring */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{
+                  duration: 25,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
                 className="absolute inset-0"
               >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white/40" />
+                <div className="absolute top-8 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white/40" />
               </motion.div>
+
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-4"
+                transition={{
+                  duration: 30,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute inset-10"
               >
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-secondary-300/50" />
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-200/60" />
               </motion.div>
+
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
